@@ -1430,15 +1430,15 @@
 
       /* Enhanced Mobile Card Effects */
       .service-card, .pricing-card, .portfolio-card, .about-card, .contact-btn {
-        animation: mobilePulse 3s ease-in-out infinite !important;
-        box-shadow: 0 0 30px rgba(0, 229, 255, 0.3) !important;
+        animation: mobilePulse 3s ease-in-out infinite;
+        box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
       }
 
-      .service-card:nth-child(1) { animation-delay: 0s !important; }
-      .service-card:nth-child(2) { animation-delay: 0.2s !important; }
-      .pricing-card:nth-child(1) { animation-delay: 0.1s !important; }
-      .pricing-card:nth-child(2) { animation-delay: 0.3s !important; }
-      .pricing-card:nth-child(3) { animation-delay: 0.5s !important; }
+      .service-card:nth-child(1) { animation-delay: 0s; }
+      .service-card:nth-child(2) { animation-delay: 0.2s; }
+      .pricing-card:nth-child(1) { animation-delay: 0.1s; }
+      .pricing-card:nth-child(2) { animation-delay: 0.3s; }
+      .pricing-card:nth-child(3) { animation-delay: 0.5s; }
 
       /* Mobile Touch 3D Effect */
       .service-card, .pricing-card, .portfolio-card, .about-card, .contact-btn {
@@ -1448,8 +1448,8 @@
       /* Enhanced Mobile Hover */
       @media (hover: none) {
         .service-card, .pricing-card, .portfolio-card, .about-card, .contact-btn {
-          transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateZ(15px) !important;
-          box-shadow: 0 15px 40px rgba(0, 229, 255, 0.4) !important;
+          transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateZ(15px);
+          box-shadow: 0 10px 30px rgba(0, 229, 255, 0.3);
         }
       }
 
@@ -1622,21 +1622,19 @@
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
- <body><!-- Background Particle System -->
+ <body>
+  <!-- Background Particle System -->
   <div class="bg-particles" id="particleContainer"></div><!-- Sticky Navigation -->
   <nav class="navbar">
    <div class="navbar-container">
-    <div class="navbar-brand">
-     <span>NTech Digital</span>
+    <div class="navbar-brand"><span>NTech Digital</span>
     </div>
-    <div class="navbar-menu">
-     <a href="#home" class="nav-link">Home</a> <a href="#services" class="nav-link">Services</a> <a href="#pricing" class="nav-link">Pricing</a> <a href="#portfolio" class="nav-link">Portfolio</a> <a href="#about" class="nav-link">About</a> <a href="#contact" class="nav-link">Contact</a>
+    <div class="navbar-menu"><a href="#home" class="nav-link">Home</a> <a href="#services" class="nav-link">Services</a> <a href="#pricing" class="nav-link">Pricing</a> <a href="#portfolio" class="nav-link">Portfolio</a> <a href="#about" class="nav-link">About</a> <a href="#contact" class="nav-link">Contact</a>
     </div><button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
    </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
-   <div class="mobile-menu-content">
-    <a href="#home" class="mobile-nav-link">Home</a> <a href="#services" class="mobile-nav-link">Services</a> <a href="#pricing" class="mobile-nav-link">Pricing</a> <a href="#portfolio" class="mobile-nav-link">Portfolio</a> <a href="#about" class="mobile-nav-link">About</a> <a href="#contact" class="mobile-nav-link">Contact</a>
+   <div class="mobile-menu-content"><a href="#home" class="mobile-nav-link">Home</a> <a href="#services" class="mobile-nav-link">Services</a> <a href="#pricing" class="mobile-nav-link">Pricing</a> <a href="#portfolio" class="mobile-nav-link">Portfolio</a> <a href="#about" class="mobile-nav-link">About</a> <a href="#contact" class="mobile-nav-link">Contact</a>
    </div>
   </div><!-- Hero Section -->
   <section id="home" class="hero-section">
@@ -1648,21 +1646,24 @@
     <div class="floating-orb orb-1"></div>
     <div class="floating-orb orb-2"></div>
     <div class="floating-orb orb-3"></div><!-- 3D Laptop Shapes -->
-    <svg class="geometric-shape cube-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
+    <svg class="geometric-shape cube-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+     <g transform="translate(80, 50)">
       <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 229, 255, 0.6)" stroke-width="2" rx="4" />
       <line x1="-40" y1="-25" x2="40" y2="-25" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
       <line x1="-40" y1="-15" x2="40" y2="-15" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
       <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 229, 255, 0.4)" stroke-width="1.5" rx="2" />
      </g>
     </svg>
-    <svg class="geometric-shape pyramid-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
+    <svg class="geometric-shape pyramid-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+     <g transform="translate(80, 50)">
       <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 153, 255, 0.6)" stroke-width="2" rx="4" />
       <circle cx="-20" cy="-15" r="8" fill="none" stroke="rgba(0, 153, 255, 0.4)" stroke-width="1" />
       <rect x="5" y="-20" width="30" height="10" fill="none" stroke="rgba(0, 153, 255, 0.4)" stroke-width="1" />
       <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 153, 255, 0.4)" stroke-width="1.5" rx="2" />
      </g>
     </svg>
-    <svg class="geometric-shape octahedron-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
+    <svg class="geometric-shape octahedron-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+     <g transform="translate(80, 50)">
       <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 229, 255, 0.5)" stroke-width="2" rx="4" />
       <line x1="-40" y1="-20" x2="40" y2="-20" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
       <line x1="-40" y1="-10" x2="40" y2="-10" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
@@ -1670,14 +1671,16 @@
       <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1.5" rx="2" />
      </g>
     </svg>
-    <svg class="geometric-shape torus-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
+    <svg class="geometric-shape torus-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+     <g transform="translate(80, 50)">
       <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 229, 255, 0.5)" stroke-width="2" rx="4" />
       <circle cx="0" cy="-5" r="4" fill="rgba(0, 229, 255, 0.4)" />
       <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1.5" rx="2" />
       <rect x="-15" y="30" width="30" height="10" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" rx="1" />
      </g>
     </svg>
-    <svg class="geometric-shape spiral-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
+    <svg class="geometric-shape spiral-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+     <g transform="translate(80, 50)">
       <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 229, 255, 0.5)" stroke-width="2" rx="4" stroke-dasharray="5,5" />
       <circle cx="0" cy="-10" r="8" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
       <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1.5" rx="2" stroke-dasharray="3,3" />
@@ -1687,8 +1690,7 @@
    <div class="hero-content">
     <h1 class="hero-title"><span class="title-gradient">NTech Digital – Web &amp; App Development</span></h1>
     <p class="hero-subtitle">Boost your business with expert web and mobile solutions.</p>
-    <div class="hero-buttons">
-     <button class="btn-primary" onclick="smoothScroll('services')">View Services</button> <button class="btn-secondary" onclick="smoothScroll('contact')">Get Started</button>
+    <div class="hero-buttons"><button class="btn-primary" onclick="smoothScroll('services')">View Services</button> <button class="btn-secondary" onclick="smoothScroll('contact')">Get Started</button>
     </div>
    </div>
   </section><!-- Services Section -->
@@ -1699,13 +1701,11 @@
      <p class="section-subtitle">Professional solutions tailored to elevate your digital presence</p>
     </div>
     <div class="services-grid">
-     <div class="service-card fade-in stagger">
-      <span class="service-icon">🌐</span>
+     <div class="service-card fade-in stagger"><span class="service-icon">🌐</span>
       <h3>Web Development</h3>
       <p>Stunning, responsive websites built for performance. Modern design meets clean code to deliver fast, engaging digital experiences.</p>
      </div>
-     <div class="service-card fade-in stagger">
-      <span class="service-icon">📱</span>
+     <div class="service-card fade-in stagger"><span class="service-icon">📱</span>
       <h3>App Development</h3>
       <p>Custom mobile applications tailored to your needs. We build fast, secure solutions for iOS and Android with exceptional user experiences.</p>
      </div>
@@ -1793,8 +1793,7 @@
     </div>
     <div class="portfolio-grid">
      <div class="portfolio-card fade-in stagger">
-      <div class="portfolio-image">
-       <span class="portfolio-image-text">LGA Hydraulics</span>
+      <div class="portfolio-image"><span class="portfolio-image-text">LGA Hydraulics</span>
       </div>
       <div class="portfolio-content">
        <h3>LGA Hydraulics</h3>
@@ -1802,8 +1801,7 @@
       </div>
      </div>
      <div class="portfolio-card fade-in stagger">
-      <div class="portfolio-image">
-       <span class="portfolio-image-text">NTech Golf</span>
+      <div class="portfolio-image"><span class="portfolio-image-text">NTech Golf</span>
       </div>
       <div class="portfolio-content">
        <h3>NTech Golf</h3>
@@ -1858,8 +1856,7 @@
      <p class="section-subtitle">Ready to transform your digital presence? Reach out today!</p>
     </div>
     <p class="contact-intro">Let's build something cinematic together. Choose your preferred way to get in touch.</p>
-    <div class="contact-buttons">
-     <a href="mailto:ntechdigitalll@gmail.com" class="contact-btn fade-in stagger"> <span class="contact-icon">✉️</span> <span class="contact-label">Email Us</span> <span class="contact-info">ntechdigitalll@gmail.com</span> </a> <a href="tel:0795234083" class="contact-btn fade-in stagger"> <span class="contact-icon">📞</span> <span class="contact-label">Call Us</span> <span class="contact-info">079 523 4083</span> </a>
+    <div class="contact-buttons"><a href="mailto:ntechdigitalll@gmail.com" class="contact-btn fade-in stagger"> <span class="contact-icon">✉️</span> <span class="contact-label">Email Us</span> <span class="contact-info">ntechdigitalll@gmail.com</span> </a> <a href="tel:0795234083" class="contact-btn fade-in stagger"> <span class="contact-icon">📞</span> <span class="contact-label">Call Us</span> <span class="contact-info">079 523 4083</span> </a>
     </div>
     <div class="footer">
      <p>© 2024 NTech Digital. All rights reserved. | Engineering digital excellence, one project at a time.</p>
@@ -2134,5 +2131,5 @@
       });
     });
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d6954f441233983',t:'MTc3MjU0ODE1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d695b12822b3983',t:'MTc3MjU0ODQwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
