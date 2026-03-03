@@ -1,0 +1,1838 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NTech Digital - Next Generation Web &amp; App Development</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      scroll-behavior: smooth;
+      perspective: 1200px;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: linear-gradient(135deg, #0a0d1a 0%, #0f1428 50%, #080b14 100%);
+      color: #d4dfe7;
+      overflow-x: hidden;
+      background-attachment: fixed;
+      transform-style: preserve-3d;
+    }
+
+    :root {
+      --neon-cyan: #00e5ff;
+      --neon-blue: #0099ff;
+      --electric-blue: #005cff;
+      --dark-navy: #0a0d1a;
+      --card-bg: rgba(10, 15, 35, 0.6);
+      --card-bg-light: rgba(15, 25, 55, 0.5);
+    }
+
+    /* Sticky Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      background: rgba(10, 13, 26, 0.8);
+      border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+      padding: 1rem 0;
+      animation: slideDown 0.8s ease forwards;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00e5ff 0%, #0099ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0px;
+      text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(0, 153, 255, 0.15));
+      border: 1.5px solid rgba(0, 229, 255, 0.4);
+      border-radius: 10px;
+      font-size: 1.3rem;
+      animation: logoFloat 3s ease-in-out infinite;
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+    }
+
+    .brand-logo-img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      animation: logoFloat 3s ease-in-out infinite;
+      padding: 4px;
+      display: block !important;
+      filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.4));
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .brand-logo:hover {
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.5), inset 0 0 10px rgba(0, 229, 255, 0.1);
+      border-color: rgba(0, 229, 255, 0.8);
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: #a8b8c8;
+      text-decoration: none;
+      position: relative;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00e5ff, #0099ff);
+      transition: width 0.4s ease;
+      border-radius: 1px;
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+    }
+
+    .nav-link:hover {
+      color: #00e5ff;
+      transform: translateY(-2px);
+      text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-menu {
+        display: none;
+      }
+
+      .navbar-brand {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 140vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+      width: 100%;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      perspective: 1000px;
+    }
+
+    .tech-grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      animation: gridShift 30s linear infinite;
+    }
+
+    /* 3D Laptop Shapes */
+    .geometric-shape {
+      position: absolute;
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.3));
+    }
+
+    .laptop-shape {
+      width: 240px;
+      height: 150px;
+      opacity: 0.35;
+    }
+
+    .cube-shape {
+      animation: rotateCube 20s infinite linear;
+      top: 15%;
+      left: 10%;
+    }
+
+    .pyramid-shape {
+      animation: rotatePyramid 25s infinite linear;
+      top: 50%;
+      right: 15%;
+      filter: drop-shadow(0 0 30px rgba(0, 153, 255, 0.4));
+    }
+
+    .octahedron-shape {
+      animation: rotateOctahedron 22s infinite linear;
+      bottom: 20%;
+      left: 15%;
+    }
+
+    .torus-shape {
+      animation: rotateTorus 18s infinite linear;
+      top: 25%;
+      right: 10%;
+    }
+
+    .spiral-shape {
+      animation: rotateSpiral 30s infinite linear;
+      bottom: 15%;
+      right: 20%;
+    }
+
+    @keyframes rotateCube {
+      0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+      100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(180deg); }
+    }
+
+    @keyframes rotatePyramid {
+      0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+      100% { transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg); }
+    }
+
+    @keyframes rotateOctahedron {
+      0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+      100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+    }
+
+    @keyframes rotateTorus {
+      0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+      100% { transform: rotateX(180deg) rotateY(360deg) rotateZ(180deg); }
+    }
+
+    @keyframes rotateSpiral {
+      0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1); }
+      50% { transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg) scale(1.1); }
+      100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg) scale(1); }
+    }
+
+    @keyframes gridShift {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(80px); }
+    }
+
+    /* Animated light waves */
+    .light-wave {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent 0%, rgba(0, 229, 255, 0.1) 25%, transparent 50%, rgba(0, 153, 255, 0.1) 75%, transparent 100%);
+      animation: waveFlow 15s linear infinite;
+      filter: blur(40px);
+    }
+
+    .wave-1 {
+      top: 10%;
+      left: -50%;
+      animation-delay: 0s;
+    }
+
+    .wave-2 {
+      top: 30%;
+      right: -50%;
+      animation-delay: 5s;
+    }
+
+    .wave-3 {
+      bottom: 20%;
+      left: -50%;
+      animation-delay: 10s;
+    }
+
+    @keyframes waveFlow {
+      0% { transform: translateX(-25%); }
+      100% { transform: translateX(25%); }
+    }
+
+    .floating-orb {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.08;
+      animation: floatSmooth 14s ease-in-out infinite;
+      filter: blur(60px);
+    }
+
+    .orb-1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #00e5ff, transparent);
+      top: -200px;
+      left: -150px;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, #0099ff, transparent);
+      bottom: -100px;
+      right: -100px;
+      animation-delay: 4s;
+    }
+
+    .orb-3 {
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, #005cff, transparent);
+      top: 35%;
+      right: -80px;
+      animation-delay: 7s;
+    }
+
+    @keyframes floatSmooth {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      25% { transform: translateY(50px) translateX(-30px); }
+      50% { transform: translateY(0) translateX(0); }
+      75% { transform: translateY(-50px) translateX(30px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 20px;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+      animation-delay: 0.4s;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 8vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.5px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .title-gradient {
+      background: linear-gradient(135deg, #00e5ff 0%, #0099ff 50%, #005cff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 8s ease infinite;
+      background-size: 200% 200%;
+      text-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: #9aacbe;
+      margin-bottom: 3.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    /* Premium Button Styles */
+    .btn-primary {
+      padding: 16px 44px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #00e5ff 0%, #0099ff 100%);
+      color: #0a0d1a;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-size: 0.9rem;
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 50px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 153, 255, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-secondary {
+      padding: 16px 44px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 1.5px solid #00e5ff;
+      cursor: pointer;
+      transition: all 0.5s ease;
+      position: relative;
+      background: rgba(0, 229, 255, 0.05);
+      color: #00e5ff;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-size: 0.9rem;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+    }
+
+    .btn-secondary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 229, 255, 0.12);
+      transition: left 0.4s ease;
+      z-index: -1;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 40px rgba(0, 229, 255, 0.7), inset 0 0 15px rgba(0, 229, 255, 0.1);
+      border-color: #0099ff;
+      color: #0099ff;
+    }
+
+    .btn-secondary:hover::after {
+      left: 0;
+      background: rgba(0, 229, 255, 0.15);
+    }
+
+    /* Section Base Styles */
+    section {
+      padding: 100px 20px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #00e5ff 0%, #0099ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: #8a9aac;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+      letter-spacing: 0.2px;
+    }
+
+    /* Services Section */
+    #services {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.02) 0%, transparent 100%);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      border-radius: 16px;
+      padding: 2.8rem;
+      backdrop-filter: blur(15px);
+      transition: all 0.7s cubic-bezier(0.23, 1, 0.320, 1);
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.1) 0%, rgba(0, 153, 255, 0.08) 100%);
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      z-index: 0;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      border-image: linear-gradient(135deg, rgba(0, 229, 255, 0.3), rgba(0, 153, 255, 0.2), transparent) 1;
+      border-radius: 16px;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .service-card:hover {
+      transform: translateY(-14px) rotateX(3deg);
+      border-color: #00e5ff;
+      box-shadow: 0 20px 60px rgba(0, 229, 255, 0.25), inset 0 0 20px rgba(0, 229, 255, 0.05);
+    }
+
+    .service-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1.8rem;
+      display: block;
+      animation: iconFloat 3.5s ease-in-out infinite;
+    }
+
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .service-card:hover .service-icon {
+      animation: iconPulse 0.7s ease;
+    }
+
+    @keyframes iconPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+      letter-spacing: -0.3px;
+    }
+
+    .service-card p {
+      color: #9aacbe;
+      line-height: 1.8;
+      font-size: 0.95rem;
+      letter-spacing: 0.2px;
+    }
+
+    /* Pricing Section */
+    #pricing {
+      background: linear-gradient(135deg, transparent 0%, rgba(0, 229, 255, 0.015) 100%);
+    }
+
+    .pricing-category {
+      margin-bottom: 4.5rem;
+    }
+
+    .pricing-category-title {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, #00e5ff 0%, #0099ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.3px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(0, 229, 255, 0.18);
+      border-radius: 14px;
+      padding: 2.2rem;
+      backdrop-filter: blur(15px);
+      transition: all 0.7s ease;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 229, 255, 0.12) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      z-index: 0;
+    }
+
+    .pricing-card:hover {
+      border-color: #00e5ff;
+      transform: translateY(-10px) rotateY(2deg) rotateX(2deg);
+      box-shadow: 0 20px 50px rgba(0, 229, 255, 0.2);
+    }
+
+    .pricing-card:hover::before {
+      opacity: 1;
+    }
+
+    .pricing-card.featured {
+      border: 1.5px solid #00e5ff;
+      box-shadow: 0 0 40px rgba(0, 229, 255, 0.3);
+      transform: scale(1.05);
+    }
+
+    .pricing-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-card h4 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+      letter-spacing: -0.2px;
+    }
+
+    .pricing-price {
+      font-size: 2.3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #00e5ff, #0099ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.8rem;
+      letter-spacing: -0.5px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-features li {
+      color: #8a9aac;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      letter-spacing: 0.1px;
+    }
+
+    .pricing-features li::before {
+      content: '✓';
+      color: #00e5ff;
+      font-weight: 900;
+      margin-right: 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    /* Portfolio Section */
+    #portfolio {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.015) 0%, transparent 100%);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .portfolio-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(0, 229, 255, 0.18);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.7s ease;
+      backdrop-filter: blur(15px);
+      position: relative;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-12px) rotateX(4deg) rotateZ(1deg);
+      border-color: #00e5ff;
+      box-shadow: 0 25px 60px rgba(0, 229, 255, 0.22);
+    }
+
+    .portfolio-image {
+      width: 100%;
+      height: 260px;
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.1) 0%, rgba(0, 153, 255, 0.08) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(0, 229, 255, 0.15) 100%);
+      opacity: 0;
+      transition: opacity 0.7s ease;
+    }
+
+    .portfolio-card:hover .portfolio-image::after {
+      opacity: 1;
+    }
+
+    .portfolio-image-text {
+      position: relative;
+      z-index: 1;
+      font-size: 1.1rem;
+      color: #00e5ff;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .portfolio-content {
+      padding: 2.2rem;
+    }
+
+    .portfolio-content h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.2px;
+    }
+
+    .portfolio-content p {
+      color: #8a9aac;
+      margin-bottom: 1.8rem;
+      line-height: 1.7;
+      font-size: 0.92rem;
+      letter-spacing: 0.1px;
+    }
+
+    /* About Section */
+    #about {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.01) 0%, rgba(0, 153, 255, 0.01) 100%);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2.2rem;
+      margin-top: 4rem;
+    }
+
+    .about-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(0, 229, 255, 0.18);
+      border-radius: 16px;
+      padding: 2.2rem;
+      backdrop-filter: blur(15px);
+      transition: all 0.7s ease;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.12), transparent);
+      transition: left 0.8s ease;
+      z-index: 0;
+    }
+
+    .about-card:hover {
+      border-color: #00e5ff;
+      transform: translateY(-8px) rotateY(-2deg) rotateX(2deg);
+      box-shadow: 0 18px 50px rgba(0, 229, 255, 0.18);
+    }
+
+    .about-card:hover::before {
+      left: 100%;
+    }
+
+    .about-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-icon {
+      font-size: 2.8rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .about-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.2px;
+    }
+
+    .about-card p {
+      color: #8a9aac;
+      line-height: 1.7;
+      font-size: 0.92rem;
+      letter-spacing: 0.1px;
+    }
+
+    /* Contact Section */
+    #contact {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.01) 0%, rgba(0, 153, 255, 0.01) 100%);
+    }
+
+    .contact-intro {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
+      color: #8a9aac;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    .contact-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+
+    .contact-btn {
+      background: var(--card-bg);
+      border: 1.5px solid #00e5ff;
+      border-radius: 14px;
+      padding: 2.5rem 1.8rem;
+      cursor: pointer;
+      transition: all 0.7s ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      backdrop-filter: blur(15px);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .contact-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.15), transparent);
+      transition: left 0.8s ease;
+      z-index: 0;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-10px) rotateY(3deg) rotateX(-3deg);
+      box-shadow: 0 0 50px rgba(0, 229, 255, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.08);
+      border-color: #0099ff;
+    }
+
+    .contact-btn:hover::before {
+      left: 100%;
+    }
+
+    .contact-btn > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-icon {
+      font-size: 3rem;
+      display: inline-block;
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      color: #7a8aac;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-weight: 600;
+    }
+
+    .contact-info {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #00e5ff;
+      letter-spacing: -0.2px;
+    }
+
+    .footer {
+      text-align: center;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(0, 229, 255, 0.08);
+      color: #556b80;
+      font-size: 0.85rem;
+      margin-top: 2.5rem;
+      letter-spacing: 0.1px;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .stagger {
+      animation-delay: 0.1s;
+    }
+
+    .stagger:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .stagger:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .stagger:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .stagger:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .stagger:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    /* 3D Tilt Effect */
+    @keyframes tilt {
+      0% { transform: rotateX(0deg) rotateY(0deg); }
+      50% { transform: rotateX(5deg) rotateY(5deg); }
+      100% { transform: rotateX(0deg) rotateY(0deg); }
+    }
+
+    .service-card {
+      animation: none;
+    }
+
+    .service-card.tilt-active {
+      animation: tilt 1.2s ease-in-out;
+    }
+
+    /* Icon Glow Pulse */
+    @keyframes iconGlowPulse {
+      0% { 
+        text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+      }
+      50% { 
+        text-shadow: 0 0 25px rgba(0, 229, 255, 0.8), 0 0 40px rgba(0, 153, 255, 0.6);
+      }
+      100% { 
+        text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+      }
+    }
+
+    .service-card:hover .service-icon {
+      animation: iconGlowPulse 1.5s ease infinite !important;
+    }
+
+    /* Parallax Depth */
+    @keyframes parallaxShift {
+      0% { transform: translateZ(0px); }
+      50% { transform: translateZ(20px); }
+      100% { transform: translateZ(0px); }
+    }
+
+    .pricing-card {
+      animation: parallaxShift 4s ease-in-out infinite;
+    }
+
+    .portfolio-card {
+      animation: parallaxShift 5s ease-in-out infinite;
+      animation-delay: 0.5s;
+    }
+
+    .about-card {
+      animation: parallaxShift 6s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    /* Shimmer Effect on Hover */
+    @keyframes shimmer {
+      0% { 
+        background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.3), transparent);
+        background-position: -1000px 0;
+      }
+      100% {
+        background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.3), transparent);
+        background-position: 1000px 0;
+      }
+    }
+
+    .service-card::before,
+    .pricing-card::before,
+    .portfolio-card::before,
+    .about-card::before,
+    .contact-btn::before {
+      animation: shimmer 2s infinite;
+      background-size: 1000px 100%;
+    }
+
+    /* Advanced 3D Effects */
+    @keyframes rotateInfinite {
+      0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+      100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+    }
+
+    @keyframes floatPulse {
+      0% { transform: translateY(0px) scale(1); }
+      25% { transform: translateY(-15px) scale(1.02); }
+      50% { transform: translateY(0px) scale(1); }
+      75% { transform: translateY(-10px) scale(1.01); }
+      100% { transform: translateY(0px) scale(1); }
+    }
+
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.3), inset 0 0 10px rgba(0, 229, 255, 0.1); }
+      50% { box-shadow: 0 0 60px rgba(0, 229, 255, 0.6), inset 0 0 30px rgba(0, 229, 255, 0.2); }
+      100% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.3), inset 0 0 10px rgba(0, 229, 255, 0.1); }
+    }
+
+    @keyframes liquidFlow {
+      0% { transform: translateY(-100%) rotateZ(-45deg); }
+      50% { transform: translateY(50%) rotateZ(0deg); }
+      100% { transform: translateY(-100%) rotateZ(45deg); }
+    }
+
+    @keyframes neonFlicker {
+      0%, 100% { opacity: 1; text-shadow: 0 0 10px rgba(0, 229, 255, 0.8); }
+      10% { opacity: 0.95; text-shadow: 0 0 15px rgba(0, 229, 255, 0.9); }
+      20% { opacity: 1; text-shadow: 0 0 20px rgba(0, 153, 255, 1); }
+      50% { opacity: 1; text-shadow: 0 0 10px rgba(0, 229, 255, 0.8); }
+      85% { opacity: 0.98; text-shadow: 0 0 25px rgba(0, 229, 255, 1); }
+    }
+
+    @keyframes orbitSpin {
+      0% { transform: rotateZ(0deg); }
+      100% { transform: rotateZ(360deg); }
+    }
+
+    @keyframes cardBounce {
+      0%, 100% { transform: translateY(0px); }
+      25% { transform: translateY(-8px); }
+      50% { transform: translateY(-12px); }
+      75% { transform: translateY(-6px); }
+    }
+
+    @keyframes borderGlow {
+      0% { border-color: rgba(0, 229, 255, 0.3); }
+      50% { border-color: rgba(0, 229, 255, 0.8); }
+      100% { border-color: rgba(0, 229, 255, 0.3); }
+    }
+
+    @keyframes particleFloat {
+      0% { opacity: 0; transform: translateY(100px) translateX(0); }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-100px) translateX(100px); }
+    }
+
+    @keyframes blurZoom {
+      0% { filter: blur(0px) brightness(1); }
+      50% { filter: blur(2px) brightness(1.2); }
+      100% { filter: blur(0px) brightness(1); }
+    }
+
+    /* Particle System */
+    .particle {
+      position: absolute;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    .particle-trail {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, #00e5ff, rgba(0, 229, 255, 0));
+      border-radius: 50%;
+      animation: particleFloat 1.5s ease-out forwards;
+    }
+
+    /* Background particle system */
+    .bg-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #00e5ff;
+      border-radius: 50%;
+      opacity: 0.6;
+      box-shadow: 0 0 6px rgba(0, 229, 255, 0.8);
+      animation: particleFloat 2s ease-out forwards;
+    }
+
+    /* Enhanced Card Animations */
+    .service-card, .pricing-card, .portfolio-card, .about-card {
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+      animation: floatPulse 4s ease-in-out infinite;
+    }
+
+    .service-card:nth-child(even) { animation-delay: 0.3s; }
+    .pricing-card:nth-child(odd) { animation-delay: 0.2s; }
+    .portfolio-card:nth-child(even) { animation-delay: 0.4s; }
+    .about-card:nth-child(odd) { animation-delay: 0.1s; }
+
+    /* Liquid Background Effects */
+    .liquid-bg {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+      mix-blend-mode: screen;
+      filter: blur(50px);
+      animation: liquidFlow 6s ease-in-out infinite;
+    }
+
+    /* Enhanced Hover Glow */
+    .service-card:hover, .pricing-card:hover, .portfolio-card:hover, .about-card:hover {
+      animation: glowPulse 1.5s ease infinite;
+    }
+
+    /* Neon Title Effect */
+    .title-gradient {
+      animation: neonFlicker 4s ease-in-out infinite;
+    }
+
+    /* Orbit Animation */
+    .orbit-container {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      animation: orbitSpin 3s linear infinite;
+    }
+
+    .orbit-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #00e5ff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00e5ff;
+    }
+
+    /* 3D Depth Cards */
+    .card-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .card-3d:hover {
+      transform: translateZ(40px) rotateX(2deg) rotateY(2deg);
+    }
+
+    /* Gradient Text Animation */
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .gradient-text {
+      background: linear-gradient(-45deg, #00e5ff, #0099ff, #005cff, #00e5ff);
+      background-size: 400% 400%;
+      animation: gradientFlow 8s ease infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Cyber Grid */
+    .cyber-grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(0deg, transparent 24%, rgba(0, 229, 255, 0.05) 25%, rgba(0, 229, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 229, 255, 0.05) 75%, rgba(0, 229, 255, 0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(0, 229, 255, 0.05) 25%, rgba(0, 229, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 229, 255, 0.05) 75%, rgba(0, 229, 255, 0.05) 76%, transparent 77%, transparent);
+      background-size: 60px 60px;
+      animation: gridShift 20s linear infinite;
+      opacity: 0.6;
+    }
+
+    /* Floating Icons */
+    .floating-icon {
+      animation: floatPulse 3s ease-in-out infinite;
+    }
+
+    /* Hover Lift Effect */
+    .lift-on-hover {
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .lift-on-hover:hover {
+      transform: translateY(-20px) scale(1.05) !important;
+    }
+
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 1.9rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .btn-primary, .btn-secondary {
+        width: 100%;
+      }
+
+      section {
+        padding: 70px 20px;
+      }
+
+      .section-header {
+        margin-bottom: 40px;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+
+      .services-grid, .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar-menu {
+        display: none;
+      }
+    }
+  </style>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body><!-- Background Particle System -->
+  <div class="bg-particles" id="particleContainer"></div><!-- Sticky Navigation -->
+  <nav class="navbar">
+   <div class="navbar-container">
+    <div class="navbar-brand">
+     <span>NTech Digital</span>
+    </div>
+    <div class="navbar-menu">
+     <a href="#home" class="nav-link">Home</a> <a href="#services" class="nav-link">Services</a> <a href="#pricing" class="nav-link">Pricing</a> <a href="#portfolio" class="nav-link">Portfolio</a> <a href="#about" class="nav-link">About</a> <a href="#contact" class="nav-link">Contact</a>
+    </div>
+   </div>
+  </nav><!-- Hero Section -->
+  <section id="home" class="hero-section">
+   <div class="hero-bg">
+    <div class="tech-grid"></div>
+    <div class="light-wave wave-1"></div>
+    <div class="light-wave wave-2"></div>
+    <div class="light-wave wave-3"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div><!-- 3D Laptop Shapes -->
+    <svg class="geometric-shape cube-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
+      <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 229, 255, 0.6)" stroke-width="2" rx="4" />
+      <line x1="-40" y1="-25" x2="40" y2="-25" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
+      <line x1="-40" y1="-15" x2="40" y2="-15" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
+      <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 229, 255, 0.4)" stroke-width="1.5" rx="2" />
+     </g>
+    </svg>
+    <svg class="geometric-shape pyramid-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
+      <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 153, 255, 0.6)" stroke-width="2" rx="4" />
+      <circle cx="-20" cy="-15" r="8" fill="none" stroke="rgba(0, 153, 255, 0.4)" stroke-width="1" />
+      <rect x="5" y="-20" width="30" height="10" fill="none" stroke="rgba(0, 153, 255, 0.4)" stroke-width="1" />
+      <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 153, 255, 0.4)" stroke-width="1.5" rx="2" />
+     </g>
+    </svg>
+    <svg class="geometric-shape octahedron-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
+      <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 229, 255, 0.5)" stroke-width="2" rx="4" />
+      <line x1="-40" y1="-20" x2="40" y2="-20" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
+      <line x1="-40" y1="-10" x2="40" y2="-10" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
+      <line x1="-40" y1="0" x2="40" y2="0" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
+      <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1.5" rx="2" />
+     </g>
+    </svg>
+    <svg class="geometric-shape torus-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
+      <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 229, 255, 0.5)" stroke-width="2" rx="4" />
+      <circle cx="0" cy="-5" r="4" fill="rgba(0, 229, 255, 0.4)" />
+      <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1.5" rx="2" />
+      <rect x="-15" y="30" width="30" height="10" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" rx="1" />
+     </g>
+    </svg>
+    <svg class="geometric-shape spiral-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
+      <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 229, 255, 0.5)" stroke-width="2" rx="4" stroke-dasharray="5,5" />
+      <circle cx="0" cy="-10" r="8" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
+      <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1.5" rx="2" stroke-dasharray="3,3" />
+     </g>
+    </svg>
+   </div>
+   <div class="hero-content">
+    <h1 class="hero-title"><span class="title-gradient">NTech Digital – Web &amp; App Development</span></h1>
+    <p class="hero-subtitle">Boost your business with expert web and mobile solutions.</p>
+    <div class="hero-buttons">
+     <button class="btn-primary" onclick="smoothScroll('services')">View Services</button> <button class="btn-secondary" onclick="smoothScroll('contact')">Get Started</button>
+    </div>
+   </div>
+  </section><!-- Services Section -->
+  <section id="services">
+   <div class="section-container">
+    <div class="section-header">
+     <h2 class="section-title">Our Services</h2>
+     <p class="section-subtitle">Professional solutions tailored to elevate your digital presence</p>
+    </div>
+    <div class="services-grid">
+     <div class="service-card fade-in stagger">
+      <span class="service-icon">🌐</span>
+      <h3>Web Development</h3>
+      <p>Stunning, responsive websites built for performance. Modern design meets clean code to deliver fast, engaging digital experiences.</p>
+     </div>
+     <div class="service-card fade-in stagger">
+      <span class="service-icon">📱</span>
+      <h3>App Development</h3>
+      <p>Custom mobile applications tailored to your needs. We build fast, secure solutions for iOS and Android with exceptional user experiences.</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Pricing Section -->
+  <section id="pricing">
+   <div class="section-container">
+    <div class="section-header">
+     <h2 class="section-title">Pricing Plans</h2>
+     <p class="section-subtitle">Transparent pricing for every stage of your digital journey</p>
+    </div><!-- Website Packages -->
+    <div class="pricing-category">
+     <h3 class="pricing-category-title">Website Development</h3>
+     <div class="pricing-grid">
+      <div class="pricing-card fade-in stagger">
+       <h4>Starter Website</h4>
+       <div class="pricing-price">
+        R1,500–R2,500
+       </div>
+       <ul class="pricing-features">
+        <li>5–10 pages</li>
+        <li>Responsive design</li>
+        <li>Contact form</li>
+        <li>Basic SEO optimization</li>
+        <li>Mobile friendly</li>
+       </ul><button class="btn-secondary" onclick="smoothScroll('contact')">Contact Us</button>
+      </div>
+      <div class="pricing-card featured fade-in stagger">
+       <h4>Professional Website</h4>
+       <div class="pricing-price">
+        R4,500–R8,000
+       </div>
+       <ul class="pricing-features">
+        <li>15–30 pages</li>
+        <li>Advanced features</li>
+        <li>E-commerce ready</li>
+        <li>CMS integration</li>
+        <li>Advanced SEO</li>
+        <li>Analytics setup</li>
+       </ul><button class="btn-secondary" onclick="smoothScroll('contact')">Contact Us</button>
+      </div>
+      <div class="pricing-card fade-in stagger">
+       <h4>Custom Website</h4>
+       <div class="pricing-price">
+        Custom Quote
+       </div>
+       <ul class="pricing-features">
+        <li>Unlimited pages</li>
+        <li>Custom features</li>
+        <li>Free hosting (1 year)</li>
+        <li>Full support &amp; maintenance</li>
+        <li>Premium SEO services</li>
+        <li>24/7 monitoring</li>
+       </ul><button class="btn-secondary" onclick="smoothScroll('contact')">Contact Us</button>
+      </div>
+     </div>
+    </div><!-- App Packages -->
+    <div class="pricing-category">
+     <h3 class="pricing-category-title">App Development</h3>
+     <div class="pricing-grid">
+      <div class="pricing-card featured fade-in stagger">
+       <h4>Custom App Development</h4>
+       <div class="pricing-price">
+        R9,000–R20,000+
+       </div>
+       <ul class="pricing-features">
+        <li>iOS &amp; Android support</li>
+        <li>Custom design &amp; UX</li>
+        <li>Backend API development</li>
+        <li>Cloud hosting included</li>
+        <li>Real-time analytics</li>
+        <li>Ongoing support &amp; updates</li>
+       </ul><button class="btn-secondary" onclick="smoothScroll('contact')">Contact Us</button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Portfolio Section -->
+  <section id="portfolio">
+   <div class="section-container">
+    <div class="section-header">
+     <h2 class="section-title">Previous Work</h2>
+     <p class="section-subtitle">Explore our portfolio of successful projects that showcase our expertise</p>
+    </div>
+    <div class="portfolio-grid">
+     <div class="portfolio-card fade-in stagger">
+      <div class="portfolio-image">
+       <span class="portfolio-image-text">LGA Hydraulics</span>
+      </div>
+      <div class="portfolio-content">
+       <h3>LGA Hydraulics</h3>
+       <p>Professional website for hydraulics engineering services. Modern design with comprehensive service showcase and optimized performance.</p><a href="https://primesite-web.github.io/LGA-Hydraulics/" target="_blank" rel="noopener noreferrer" class="btn-primary">View Project</a>
+      </div>
+     </div>
+     <div class="portfolio-card fade-in stagger">
+      <div class="portfolio-image">
+       <span class="portfolio-image-text">NTech Golf</span>
+      </div>
+      <div class="portfolio-content">
+       <h3>NTech Golf</h3>
+       <p>Custom mobile application for golf enthusiasts. Features real-time scoring, course management, and player analytics. iOS &amp; Android.</p><button class="btn-primary" onclick="smoothScroll('contact')">Inquire About This Project</button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- About Section -->
+  <section id="about">
+   <div class="section-container">
+    <div class="section-header">
+     <h2 class="section-title">About NTech Digital</h2>
+     <p class="section-subtitle">A forward-thinking technology company focused on innovation, performance, and high-quality digital solutions</p>
+    </div>
+    <div class="about-grid">
+     <div class="about-card fade-in stagger">
+      <div class="about-icon">
+       💡
+      </div>
+      <h3>Modern Innovation</h3>
+      <p>Cutting-edge technologies powering tomorrow's solutions. We stay ahead of industry trends to keep your business future-proof and competitive.</p>
+     </div>
+     <div class="about-card fade-in stagger">
+      <div class="about-icon">
+       ⚡
+      </div>
+      <h3>Performance First</h3>
+      <p>Optimized for speed and efficiency. We deliver blazing-fast applications providing exceptional user experiences across all devices and platforms.</p>
+     </div>
+     <div class="about-card fade-in stagger">
+      <div class="about-icon">
+       🎯
+      </div>
+      <h3>Quality Driven</h3>
+      <p>Meticulous attention to detail with rigorous testing. Every project meets the highest standards. We never compromise on quality.</p>
+     </div>
+     <div class="about-card fade-in stagger">
+      <div class="about-icon">
+       🚀
+      </div>
+      <h3>Scalable Solutions</h3>
+      <p>Built to grow with your business. Our architectures scale effortlessly, supporting your expansion without compromising performance or reliability.</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section id="contact">
+   <div class="section-container">
+    <div class="section-header">
+     <h2 class="section-title">Let's Build Something Cinematic</h2>
+     <p class="section-subtitle">Ready to transform your digital presence? Reach out today!</p>
+    </div>
+    <p class="contact-intro">Let's build something cinematic together. Choose your preferred way to get in touch.</p>
+    <div class="contact-buttons">
+     <a href="mailto:ntechdigitalll@gmail.com" class="contact-btn fade-in stagger"> <span class="contact-icon">✉️</span> <span class="contact-label">Email Us</span> <span class="contact-info">ntechdigitalll@gmail.com</span> </a> <a href="tel:0795234083" class="contact-btn fade-in stagger"> <span class="contact-icon">📞</span> <span class="contact-label">Call Us</span> <span class="contact-info">079 523 4083</span> </a>
+    </div>
+    <div class="footer">
+     <p>© 2024 NTech Digital. All rights reserved. | Engineering digital excellence, one project at a time.</p>
+    </div>
+   </div>
+  </section>
+  <script>
+    // Smooth scroll function
+    function smoothScroll(targetId) {
+      const target = document.getElementById(targetId);
+      if (target) {
+        const offsetTop = target.offsetTop - 80;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = `fadeInUp 0.8s ease forwards`;
+          if (entry.target.style.animationDelay) {
+            entry.target.style.animation = `fadeInUp 0.8s ease ${entry.target.style.animationDelay} forwards`;
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Navigation link smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          smoothScroll(href.substring(1));
+        }
+      });
+    });
+
+    // 3D Tilt effect on mouse move
+    const cards = document.querySelectorAll('.service-card, .pricing-card, .portfolio-card, .about-card, .contact-btn');
+    
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+    // Icon pulse animation trigger
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+      const icon = card.querySelector('.service-icon');
+      card.addEventListener('mouseenter', () => {
+        icon.style.animation = 'iconGlowPulse 1.5s ease infinite';
+      });
+      card.addEventListener('mouseleave', () => {
+        icon.style.animation = '';
+      });
+    });
+
+    // Parallax scroll effect with enhanced 3D
+    window.addEventListener('scroll', () => {
+      cards.forEach((card, index) => {
+        const scrollY = window.scrollY;
+        const offset = scrollY * (0.02 + index * 0.01);
+        const rotation = (scrollY * 0.1) % 360;
+        card.style.transform = `translateY(${offset}px) rotateZ(${rotation * 0.05}deg)`;
+      });
+    });
+
+    // Particle effect generator
+    function createParticles(x, y, card) {
+      for (let i = 0; i < 6; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle-trail';
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        
+        const angle = (Math.PI * 2 * i) / 6;
+        const velocity = 2 + Math.random() * 4;
+        const tx = Math.cos(angle) * velocity * 20;
+        const ty = Math.sin(angle) * velocity * 20;
+        
+        particle.style.setProperty('--tx', tx + 'px');
+        particle.style.setProperty('--ty', ty + 'px');
+        
+        card.parentElement.appendChild(particle);
+        setTimeout(() => particle.remove(), 1500);
+      }
+    }
+
+    // Create continuous background particles
+    function createBackgroundParticles() {
+      const container = document.getElementById('particleContainer');
+      
+      // Create burst of particles at random intervals with increased frequency and count
+      setInterval(() => {
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight;
+        
+        for (let i = 0; i < 16; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'bg-particle';
+          particle.style.left = x + 'px';
+          particle.style.top = y + 'px';
+          
+          const angle = (Math.PI * 2 * i) / 16;
+          const velocity = 1.5 + Math.random() * 4;
+          const tx = Math.cos(angle) * velocity * 50;
+          const ty = Math.sin(angle) * velocity * 50;
+          
+          particle.style.setProperty('--tx', tx + 'px');
+          particle.style.setProperty('--ty', ty + 'px');
+          
+          container.appendChild(particle);
+          setTimeout(() => particle.remove(), 2500);
+        }
+      }, 200);
+    }
+
+    // Start background particle generation on load
+    window.addEventListener('load', () => {
+      createBackgroundParticles();
+    });
+
+    // Enhanced card interactions with particles
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', (e) => {
+        const rect = card.getBoundingClientRect();
+        createParticles(rect.width / 2, rect.height / 2, card);
+        card.style.filter = 'drop-shadow(0 0 30px rgba(0, 229, 255, 0.5))';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.filter = 'drop-shadow(0 0 0px rgba(0, 229, 255, 0))';
+      });
+    });
+
+    // Advanced mouse tracking with perspective
+    document.addEventListener('mousemove', (e) => {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const distX = (e.clientX - centerX) / centerX;
+      const distY = (e.clientY - centerY) / centerY;
+
+      cards.forEach(card => {
+        if (card.matches(':hover')) {
+          const tilt = 5;
+          const rotX = distY * tilt;
+          const rotY = -distX * tilt;
+          
+          card.style.transform = `
+            perspective(1200px)
+            rotateX(${rotX + 2}deg)
+            rotateY(${rotY - 2}deg)
+            translateZ(30px)
+            scale(1.02)
+          `;
+        }
+      });
+    });
+
+    // Glow intensity on scroll
+    window.addEventListener('scroll', () => {
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      document.querySelectorAll('.service-card, .pricing-card, .portfolio-card, .about-card').forEach(card => {
+        const glowIntensity = 0.2 + (scrollPercent / 500);
+        card.style.boxShadow = `0 0 ${30 + glowIntensity * 20}px rgba(0, 229, 255, ${0.2 + glowIntensity})`;
+      });
+    });
+
+    // Dynamic background responsiveness
+    const hero = document.querySelector('.hero-section');
+    document.addEventListener('mousemove', (e) => {
+      if (hero && window.scrollY < hero.offsetHeight) {
+        const x = (e.clientX / window.innerWidth) * 20 - 10;
+        const y = (e.clientY / window.innerHeight) * 20 - 10;
+        
+        document.querySelectorAll('.floating-orb').forEach((orb, i) => {
+          orb.style.transform = `translate(${x * (i + 1) * 0.5}px, ${y * (i + 1) * 0.5}px)`;
+        });
+      }
+    });
+
+    // Stagger animation enhancement
+    document.querySelectorAll('.stagger').forEach((el, index) => {
+      el.style.animationDelay = `${index * 0.15}s`;
+    });
+
+    // Hero content entrance animation enhancement
+    window.addEventListener('load', () => {
+      const heroContent = document.querySelector('.hero-content');
+      if (heroContent) {
+        heroContent.style.animation = 'fadeInUp 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
+      }
+    });
+
+    // Continuous floating animation trigger
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.service-icon, .about-icon').forEach(icon => {
+        icon.classList.add('floating-icon');
+      });
+    });
+
+    // Enhanced hover effects with sound-like visual feedback
+    cards.forEach(card => {
+      card.addEventListener('mousedown', (e) => {
+        card.style.transform = card.style.transform.replace('scale(1', 'scale(0.98');
+        
+        setTimeout(() => {
+          card.style.transform = card.style.transform.replace('scale(0.98', 'scale(1');
+        }, 100);
+      });
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d69443a54d84ebd',t:'MTc3MjU0NzQ2NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
