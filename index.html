@@ -1278,106 +1278,7 @@
       animation: particleFloat 2s ease-out forwards;
     }
 
-    /* Enhanced Card Animations */
-    .service-card, .pricing-card, .portfolio-card, .about-card {
-      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-      animation: floatPulse 4s ease-in-out infinite;
-    }
 
-    .service-card:nth-child(even) { animation-delay: 0.3s; }
-    .pricing-card:nth-child(odd) { animation-delay: 0.2s; }
-    .portfolio-card:nth-child(even) { animation-delay: 0.4s; }
-    .about-card:nth-child(odd) { animation-delay: 0.1s; }
-
-    /* Liquid Background Effects */
-    .liquid-bg {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0;
-      mix-blend-mode: screen;
-      filter: blur(50px);
-      animation: liquidFlow 6s ease-in-out infinite;
-    }
-
-    /* Enhanced Hover Glow */
-    .service-card:hover, .pricing-card:hover, .portfolio-card:hover, .about-card:hover {
-      animation: glowPulse 1.5s ease infinite;
-    }
-
-    /* Neon Title Effect */
-    .title-gradient {
-      animation: neonFlicker 4s ease-in-out infinite;
-    }
-
-    /* Orbit Animation */
-    .orbit-container {
-      position: relative;
-      width: 60px;
-      height: 60px;
-      animation: orbitSpin 3s linear infinite;
-    }
-
-    .orbit-dot {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: #00e5ff;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #00e5ff;
-    }
-
-    /* 3D Depth Cards */
-    .card-3d {
-      transform-style: preserve-3d;
-      transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-    }
-
-    .card-3d:hover {
-      transform: translateZ(40px) rotateX(2deg) rotateY(2deg);
-    }
-
-    /* Gradient Text Animation */
-    @keyframes gradientFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .gradient-text {
-      background: linear-gradient(-45deg, #00e5ff, #0099ff, #005cff, #00e5ff);
-      background-size: 400% 400%;
-      animation: gradientFlow 8s ease infinite;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Cyber Grid */
-    .cyber-grid {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        linear-gradient(0deg, transparent 24%, rgba(0, 229, 255, 0.05) 25%, rgba(0, 229, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 229, 255, 0.05) 75%, rgba(0, 229, 255, 0.05) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 24%, rgba(0, 229, 255, 0.05) 25%, rgba(0, 229, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 229, 255, 0.05) 75%, rgba(0, 229, 255, 0.05) 76%, transparent 77%, transparent);
-      background-size: 60px 60px;
-      animation: gridShift 20s linear infinite;
-      opacity: 0.6;
-    }
-
-    /* Floating Icons */
-    .floating-icon {
-      animation: floatPulse 3s ease-in-out infinite;
-    }
-
-    /* Hover Lift Effect */
-    .lift-on-hover {
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .lift-on-hover:hover {
-      transform: translateY(-20px) scale(1.05) !important;
-    }
 
 
     @media (max-width: 768px) {
@@ -1396,11 +1297,6 @@
 
       .btn-primary, .btn-secondary {
         width: 100%;
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-
-      .btn-primary:active, .btn-secondary:active {
-        transform: scale(0.95) !important;
       }
 
       section {
@@ -1413,7 +1309,6 @@
 
       .section-title {
         font-size: 1.6rem;
-        animation: neonFlicker 4s ease-in-out infinite;
       }
 
       .pricing-card.featured {
@@ -1423,218 +1318,27 @@
       .services-grid, .portfolio-grid {
         grid-template-columns: 1fr;
       }
-
-      .navbar-menu {
-        display: none;
-      }
-
-      /* Enhanced Mobile Card Effects */
-      .service-card, .pricing-card, .portfolio-card, .about-card, .contact-btn {
-        animation: mobilePulse 3s ease-in-out infinite;
-        box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
-      }
-
-      .service-card:nth-child(1) { animation-delay: 0s; }
-      .service-card:nth-child(2) { animation-delay: 0.2s; }
-      .pricing-card:nth-child(1) { animation-delay: 0.1s; }
-      .pricing-card:nth-child(2) { animation-delay: 0.3s; }
-      .pricing-card:nth-child(3) { animation-delay: 0.5s; }
-
-      /* Mobile Touch 3D Effect */
-      .service-card, .pricing-card, .portfolio-card, .about-card, .contact-btn {
-        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      }
-
-      /* Enhanced Mobile Hover */
-      @media (hover: none) {
-        .service-card, .pricing-card, .portfolio-card, .about-card, .contact-btn {
-          transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateZ(15px);
-          box-shadow: 0 10px 30px rgba(0, 229, 255, 0.3);
-        }
-      }
-
-      /* Mobile Icon Animations */
-      .service-icon, .about-icon {
-        animation: mobileIconBounce 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite !important;
-      }
-
-      @keyframes mobileIconBounce {
-        0%, 100% { transform: translateY(0) scale(1); }
-        25% { transform: translateY(-8px) scale(1.1); }
-        50% { transform: translateY(0) scale(1); }
-        75% { transform: translateY(-4px) scale(1.05); }
-      }
-
-      @keyframes mobilePulse {
-        0%, 100% { 
-          transform: perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1);
-          box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
-        }
-        50% { 
-          transform: perspective(1200px) rotateX(1deg) rotateY(1deg) scale(1.02);
-          box-shadow: 0 0 40px rgba(0, 229, 255, 0.5);
-        }
-      }
-
-      /* Mobile Text Gradient Animation */
-      .section-title, .title-gradient {
-        animation: mobileGradientPulse 4s ease-in-out infinite !important;
-      }
-
-      @keyframes mobileGradientPulse {
-        0%, 100% { 
-          filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.4));
-        }
-        50% { 
-          filter: drop-shadow(0 0 25px rgba(0, 229, 255, 0.8));
-        }
-      }
-
-      /* Mobile Responsive Grid Animation */
-      .services-grid .service-card {
-        animation: mobileCardSlide 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-      }
-
-      .services-grid .service-card:nth-child(1) {
-        animation-delay: 0.2s;
-      }
-
-      .services-grid .service-card:nth-child(2) {
-        animation-delay: 0.4s;
-      }
-
-      @keyframes mobileCardSlide {
-        from {
-          opacity: 0;
-          transform: translateY(30px) rotateX(-10deg);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0) rotateX(0deg);
-        }
-      }
-
-      /* Enhanced Mobile Button Effects */
-      .btn-primary {
-        background: linear-gradient(135deg, #00e5ff 0%, #0099ff 100%);
-        box-shadow: 0 0 30px rgba(0, 229, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        animation: mobileBtnGlow 2s ease-in-out infinite;
-      }
-
-      .btn-secondary {
-        box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
-        animation: mobileBtnGlow 2.5s ease-in-out infinite;
-        animation-delay: 0.3s;
-      }
-
-      @keyframes mobileBtnGlow {
-        0%, 100% { 
-          box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
-        }
-        50% { 
-          box-shadow: 0 0 40px rgba(0, 229, 255, 0.7);
-        }
-      }
-
-      /* Mobile Portfolio Cards */
-      .portfolio-card {
-        animation: mobilePortfolioPulse 4s ease-in-out infinite !important;
-      }
-
-      .portfolio-card:nth-child(1) { animation-delay: 0s !important; }
-      .portfolio-card:nth-child(2) { animation-delay: 0.3s !important; }
-
-      @keyframes mobilePortfolioPulse {
-        0%, 100% { 
-          transform: perspective(1000px) rotateY(0deg) scale(1);
-        }
-        50% { 
-          transform: perspective(1000px) rotateY(2deg) scale(1.01);
-        }
-      }
-
-      /* Mobile About Cards Stack */
-      .about-grid .about-card {
-        animation: mobileAboutStack 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-      }
-
-      .about-grid .about-card:nth-child(1) { animation-delay: 0.1s; }
-      .about-grid .about-card:nth-child(2) { animation-delay: 0.2s; }
-      .about-grid .about-card:nth-child(3) { animation-delay: 0.3s; }
-      .about-grid .about-card:nth-child(4) { animation-delay: 0.4s; }
-
-      @keyframes mobileAboutStack {
-        from {
-          opacity: 0;
-          transform: translateX(-20px) rotateY(-15deg);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0) rotateY(0deg);
-        }
-      }
-
-      /* Mobile Contact Buttons */
-      .contact-btn {
-        animation: mobileContactPulse 3.5s ease-in-out infinite !important;
-      }
-
-      .contact-btn:nth-child(1) { animation-delay: 0s !important; }
-      .contact-btn:nth-child(2) { animation-delay: 0.2s !important; }
-
-      @keyframes mobileContactPulse {
-        0%, 100% { 
-          transform: perspective(800px) rotateX(0deg) scale(1);
-          box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
-        }
-        50% { 
-          transform: perspective(800px) rotateX(3deg) scale(1.01);
-          box-shadow: 0 0 35px rgba(0, 229, 255, 0.5);
-        }
-      }
-
-      /* Mobile Hero Enhancement */
-      .hero-section {
-        perspective: 1000px;
-      }
-
-      .hero-content {
-        animation: mobileHeroFloat 4s ease-in-out infinite;
-      }
-
-      @keyframes mobileHeroFloat {
-        0%, 100% { transform: translateY(0) rotateX(0deg); }
-        50% { transform: translateY(-15px) rotateX(1deg); }
-      }
-
-      /* Mobile Link Enhanced */
-      .mobile-nav-link {
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-
-      .mobile-nav-link:active {
-        transform: scale(0.95) translateX(-5px);
-        text-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
-      }
     }
   </style>
   <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
- <body>
-  <!-- Background Particle System -->
+ <body><!-- Background Particle System -->
   <div class="bg-particles" id="particleContainer"></div><!-- Sticky Navigation -->
   <nav class="navbar">
    <div class="navbar-container">
-    <div class="navbar-brand"><span>NTech Digital</span>
+    <div class="navbar-brand">
+     <span>NTech Digital</span>
     </div>
-    <div class="navbar-menu"><a href="#home" class="nav-link">Home</a> <a href="#services" class="nav-link">Services</a> <a href="#pricing" class="nav-link">Pricing</a> <a href="#portfolio" class="nav-link">Portfolio</a> <a href="#about" class="nav-link">About</a> <a href="#contact" class="nav-link">Contact</a>
+    <div class="navbar-menu">
+     <a href="#home" class="nav-link">Home</a> <a href="#services" class="nav-link">Services</a> <a href="#pricing" class="nav-link">Pricing</a> <a href="#portfolio" class="nav-link">Portfolio</a> <a href="#about" class="nav-link">About</a> <a href="#contact" class="nav-link">Contact</a>
     </div><button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
    </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
-   <div class="mobile-menu-content"><a href="#home" class="mobile-nav-link">Home</a> <a href="#services" class="mobile-nav-link">Services</a> <a href="#pricing" class="mobile-nav-link">Pricing</a> <a href="#portfolio" class="mobile-nav-link">Portfolio</a> <a href="#about" class="mobile-nav-link">About</a> <a href="#contact" class="mobile-nav-link">Contact</a>
+   <div class="mobile-menu-content">
+    <a href="#home" class="mobile-nav-link">Home</a> <a href="#services" class="mobile-nav-link">Services</a> <a href="#pricing" class="mobile-nav-link">Pricing</a> <a href="#portfolio" class="mobile-nav-link">Portfolio</a> <a href="#about" class="mobile-nav-link">About</a> <a href="#contact" class="mobile-nav-link">Contact</a>
    </div>
   </div><!-- Hero Section -->
   <section id="home" class="hero-section">
@@ -1646,24 +1350,21 @@
     <div class="floating-orb orb-1"></div>
     <div class="floating-orb orb-2"></div>
     <div class="floating-orb orb-3"></div><!-- 3D Laptop Shapes -->
-    <svg class="geometric-shape cube-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
-     <g transform="translate(80, 50)">
+    <svg class="geometric-shape cube-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
       <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 229, 255, 0.6)" stroke-width="2" rx="4" />
       <line x1="-40" y1="-25" x2="40" y2="-25" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
       <line x1="-40" y1="-15" x2="40" y2="-15" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
       <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 229, 255, 0.4)" stroke-width="1.5" rx="2" />
      </g>
     </svg>
-    <svg class="geometric-shape pyramid-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
-     <g transform="translate(80, 50)">
+    <svg class="geometric-shape pyramid-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
       <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 153, 255, 0.6)" stroke-width="2" rx="4" />
       <circle cx="-20" cy="-15" r="8" fill="none" stroke="rgba(0, 153, 255, 0.4)" stroke-width="1" />
       <rect x="5" y="-20" width="30" height="10" fill="none" stroke="rgba(0, 153, 255, 0.4)" stroke-width="1" />
       <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 153, 255, 0.4)" stroke-width="1.5" rx="2" />
      </g>
     </svg>
-    <svg class="geometric-shape octahedron-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
-     <g transform="translate(80, 50)">
+    <svg class="geometric-shape octahedron-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
       <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 229, 255, 0.5)" stroke-width="2" rx="4" />
       <line x1="-40" y1="-20" x2="40" y2="-20" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
       <line x1="-40" y1="-10" x2="40" y2="-10" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
@@ -1671,16 +1372,14 @@
       <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1.5" rx="2" />
      </g>
     </svg>
-    <svg class="geometric-shape torus-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
-     <g transform="translate(80, 50)">
+    <svg class="geometric-shape torus-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
       <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 229, 255, 0.5)" stroke-width="2" rx="4" />
       <circle cx="0" cy="-5" r="4" fill="rgba(0, 229, 255, 0.4)" />
       <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1.5" rx="2" />
       <rect x="-15" y="30" width="30" height="10" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" rx="1" />
      </g>
     </svg>
-    <svg class="geometric-shape spiral-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
-     <g transform="translate(80, 50)">
+    <svg class="geometric-shape spiral-shape laptop-shape" viewbox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80, 50)">
       <rect x="-50" y="-35" width="100" height="55" fill="none" stroke="rgba(0, 229, 255, 0.5)" stroke-width="2" rx="4" stroke-dasharray="5,5" />
       <circle cx="0" cy="-10" r="8" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1" />
       <rect x="-50" y="20" width="100" height="15" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1.5" rx="2" stroke-dasharray="3,3" />
@@ -1690,7 +1389,8 @@
    <div class="hero-content">
     <h1 class="hero-title"><span class="title-gradient">NTech Digital – Web &amp; App Development</span></h1>
     <p class="hero-subtitle">Boost your business with expert web and mobile solutions.</p>
-    <div class="hero-buttons"><button class="btn-primary" onclick="smoothScroll('services')">View Services</button> <button class="btn-secondary" onclick="smoothScroll('contact')">Get Started</button>
+    <div class="hero-buttons">
+     <button class="btn-primary" onclick="smoothScroll('services')">View Services</button> <button class="btn-secondary" onclick="smoothScroll('contact')">Get Started</button>
     </div>
    </div>
   </section><!-- Services Section -->
@@ -1701,11 +1401,13 @@
      <p class="section-subtitle">Professional solutions tailored to elevate your digital presence</p>
     </div>
     <div class="services-grid">
-     <div class="service-card fade-in stagger"><span class="service-icon">🌐</span>
+     <div class="service-card fade-in stagger">
+      <span class="service-icon">🌐</span>
       <h3>Web Development</h3>
       <p>Stunning, responsive websites built for performance. Modern design meets clean code to deliver fast, engaging digital experiences.</p>
      </div>
-     <div class="service-card fade-in stagger"><span class="service-icon">📱</span>
+     <div class="service-card fade-in stagger">
+      <span class="service-icon">📱</span>
       <h3>App Development</h3>
       <p>Custom mobile applications tailored to your needs. We build fast, secure solutions for iOS and Android with exceptional user experiences.</p>
      </div>
@@ -1793,7 +1495,8 @@
     </div>
     <div class="portfolio-grid">
      <div class="portfolio-card fade-in stagger">
-      <div class="portfolio-image"><span class="portfolio-image-text">LGA Hydraulics</span>
+      <div class="portfolio-image">
+       <span class="portfolio-image-text">LGA Hydraulics</span>
       </div>
       <div class="portfolio-content">
        <h3>LGA Hydraulics</h3>
@@ -1801,7 +1504,8 @@
       </div>
      </div>
      <div class="portfolio-card fade-in stagger">
-      <div class="portfolio-image"><span class="portfolio-image-text">NTech Golf</span>
+      <div class="portfolio-image">
+       <span class="portfolio-image-text">NTech Golf</span>
       </div>
       <div class="portfolio-content">
        <h3>NTech Golf</h3>
@@ -1856,7 +1560,8 @@
      <p class="section-subtitle">Ready to transform your digital presence? Reach out today!</p>
     </div>
     <p class="contact-intro">Let's build something cinematic together. Choose your preferred way to get in touch.</p>
-    <div class="contact-buttons"><a href="mailto:ntechdigitalll@gmail.com" class="contact-btn fade-in stagger"> <span class="contact-icon">✉️</span> <span class="contact-label">Email Us</span> <span class="contact-info">ntechdigitalll@gmail.com</span> </a> <a href="tel:0795234083" class="contact-btn fade-in stagger"> <span class="contact-icon">📞</span> <span class="contact-label">Call Us</span> <span class="contact-info">079 523 4083</span> </a>
+    <div class="contact-buttons">
+     <a href="mailto:ntechdigitalll@gmail.com" class="contact-btn fade-in stagger"> <span class="contact-icon">✉️</span> <span class="contact-label">Email Us</span> <span class="contact-info">ntechdigitalll@gmail.com</span> </a> <a href="tel:0795234083" class="contact-btn fade-in stagger"> <span class="contact-icon">📞</span> <span class="contact-label">Call Us</span> <span class="contact-info">079 523 4083</span> </a>
     </div>
     <div class="footer">
      <p>© 2024 NTech Digital. All rights reserved. | Engineering digital excellence, one project at a time.</p>
@@ -2131,5 +1836,5 @@
       });
     });
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d695b12822b3983',t:'MTc3MjU0ODQwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d6960f4f1073983',t:'MTc3MjU0ODY0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
